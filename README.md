@@ -1,4 +1,4 @@
-# Sudden Network Slowness
+# 📉Sudden Network Slowness
 
 In this project, we investigate and respond to unusual internal port-scan activity that resulted in sudden network slowdowns within a cloud-based environment.
 
