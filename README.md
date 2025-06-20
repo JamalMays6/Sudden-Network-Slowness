@@ -8,7 +8,7 @@ _**Completion State:**_ the root cause is confirmed as a PowerShell-based port s
 
 ---
 
-# Technology Utilized
+## Technology Utilized
 - Microsoft Defender for Endpoint (device-level detection, script monitoring, and live response isolation)
 - Azure Virtual Machines (hosted the internet-exposed scanning VM and target systems)
 - PowerShell (used for both malicious port scanning and incident response scripting)
