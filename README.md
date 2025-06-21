@@ -1,4 +1,4 @@
-# 📉Sudden Network Slowness
+# 📉 Sudden Network Slowness
 
 In this project, we investigate and respond to unusual internal port-scan activity that resulted in sudden network slowdowns within a cloud-based environment.
 
@@ -13,6 +13,28 @@ _**Completion State:**_ the root cause is confirmed as a PowerShell-based port s
 - Azure Virtual Machines (hosted the internet-exposed scanning VM and target systems)
 - PowerShell (used for both malicious port scanning and incident response scripting)
 - Azure Network Security Groups (NSG) (controlled inbound/outbound traffic to mitigate and block scan behavior)
+
+
+---
+## 📑 Table of Contents
+
+- [📉 Sudden Network Slowness](#-sudden-network-slowness)
+- [🧰 Technology Utilized](#technology-utilized)
+- [📑 Table of Contents](#-table-of-contents)
+- [🔍 Initial Anomaly Detection](#-initial-anomaly-detection)
+- [🕵️‍♂️ Suspicious IP Focus](-#-suspicious-ip-focus)
+- [🧨 Malicious Script Execution Identified](#-malicious-script-execution-identified)
+- [🚨 Containment & Escalation Response](#-containment--escalation-response)
+- [🧩 MITRE ATT&CK Mapping](#-mitre-attck-mapping)
+- [🔧 Recommended Mitigations](#-recommended-mitigations)
+  - [1. Isolate and Reimage the Affected VM](#1-isolate-and-reimage-the-affected-vm-containment--recovery)
+  - [2. Investigate SYSTEM-Level Script Execution](#2-investigate-system-level-script-execution-detection--prevention)
+  - [3. Block Unauthorized Internal Port Scans](#3-block-unauthorized-internal-port-scans-containment)
+  - [4. Validate and Harden PowerShell Logging](#4-validate-and-harden-powershell-logging-hardening--detection)
+  - [5. Set Up Sentinel Alerts for Abnormal Device Behavior](#5-set-up-sentinel-alerts-for-abnormal-device-behavior-detection)
+- [📊 Summary Table](#-summary-table)
+
+
 
 ---
 ## 🔍 Initial Anomaly Detection
@@ -169,7 +191,7 @@ DeviceNetworkEvents
 
 ---
 
-📊 Summary Table
+## 📊 Summary Table
 | Action                                         | Purpose                | Status                 |
 | ---------------------------------------------- | ---------------------- | ---------------------- |
 | Isolate & Reimage the VM                       | Containment / Recovery | ✅ Required             |
