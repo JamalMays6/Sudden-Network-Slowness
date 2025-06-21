@@ -22,7 +22,7 @@ _**Completion State:**_ the root cause is confirmed as a PowerShell-based port s
 - [🧰 Technology Utilized](#technology-utilized)
 - [📑 Table of Contents](#-table-of-contents)
 - [🔍 Initial Anomaly Detection](#-initial-anomaly-detection)
-- [🕵️‍♂️ Suspicious IP Focus](-#-suspicious-ip-focus)
+- [🕵️‍♂️ Suspicious IP Focus](#suspicious-ip-focus)
 - [🧨 Malicious Script Execution Identified](#-malicious-script-execution-identified)
 - [🚨 Containment & Escalation Response](#-containment--escalation-response)
 - [🧩 MITRE ATT&CK Mapping](#-mitre-attck-mapping)
@@ -47,7 +47,7 @@ To kick off this investigation, we used an initial query into the DeviceNetworkE
 ![image](https://github.com/user-attachments/assets/7c146d84-15c7-49c6-a750-88c8715de200)
 
 ---
-## 🕵️‍♂️ Suspicious IP Focus
+## Suspicious IP Focus
 
 After identifying a large number of connection failures on our VM, we moved to examine the suspected source IP address *10.0.0.85* that quickly stood out due to the sequential pattern of ports it attempted to access which is a common indicator of a port scan.
 
