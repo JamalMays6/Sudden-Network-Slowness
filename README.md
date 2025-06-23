@@ -201,5 +201,15 @@ DeviceNetworkEvents
 | Deploy Sentinel analytics for port scan alerts | Detection              | ✅ Essential            |
 
 
+---
 
+## 🧑‍💼 Author
 
+Created by Jamal Mays  
+💻 Cybersecurity Engineer | ✨ Portfolio Builder
+
+---
+
+## ⭐ Like This Project?
+
+Give it a ⭐ on GitHub and connect with me on [LinkedIn](https://linkedin.com/in/jamal-mays/)!
