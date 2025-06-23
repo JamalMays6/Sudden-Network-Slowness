@@ -1,6 +1,6 @@
 # 📉 Sudden Network Slowness
 
-In this project, we investigate and respond to unusual internal port-scan activity that resulted in sudden network slowdowns within a cloud-based environment.
+In this project, I investigate and respond to unusual internal port-scan activity that resulted in sudden network slowdowns within a cloud-based environment.
 
 _**Inception State:**_ the environment shows signs of degraded network performance with no clear cause identified. There are no existing indicators of compromise or known malicious activity, and the impacted virtual machine is still connected to the network.
 
@@ -39,7 +39,7 @@ _**Completion State:**_ the root cause is confirmed as a PowerShell-based port s
 ---
 ## 🔍 Initial Anomaly Detection
 
-To kick off this investigation, we used an initial query into the DeviceNetworkEvents table in Microsoft Defender for Endpoint. We were able to analyze unexpected network activity originating from one of our lab VMs (r3dant-ls-lab6). This initial query revealed that the VM was failing a high volume of outbound connection requests not just to external systems, but also to itself and another internal host on the same subnet. This unusual behavior raised immediate concerns about internal scanning or misconfiguration and prompted a deeper investigation into possible port scanning activity. Here's one of the first queries we ran and the results:
+To kick off this investigation, I used an initial query into the DeviceNetworkEvents table in Microsoft Defender for Endpoint. I was able to analyze unexpected network activity originating from one of our lab VMs (r3dant-ls-lab6). This initial query revealed that the VM was failing a high volume of outbound connection requests not just to external systems, but also to itself and another internal host on the same subnet. This unusual behavior raised immediate concerns about internal scanning or misconfiguration and prompted a deeper investigation into possible port scanning activity. Here's one of the first queries we ran and the results:
 
 
 ![image](https://github.com/user-attachments/assets/59c13d5f-c8b8-48fe-86b5-0ea1bff8af12)
@@ -49,9 +49,9 @@ To kick off this investigation, we used an initial query into the DeviceNetworkE
 ---
 ## Suspicious IP Focus
 
-After identifying a large number of connection failures on our VM, we moved to examine the suspected source IP address *10.0.0.85* that quickly stood out due to the sequential pattern of ports it attempted to access which is a common indicator of a port scan.
+After identifying a large number of connection failures on our VM, I moved to examine the suspected source IP address *10.0.0.85* that quickly stood out due to the sequential pattern of ports it attempted to access which is a common indicator of a port scan.
 
-We ran the following Kusto Query Language (KQL) query in Microsoft Defender for Endpoint to investigate the failed connection attempts from that IP:
+I ran the following Kusto Query Language (KQL) query in Microsoft Defender for Endpoint to investigate the failed connection attempts from that IP:
 
 
 ![image](https://github.com/user-attachments/assets/d5db7aa6-e270-4dc0-8482-a4425799d626)
@@ -67,9 +67,9 @@ The results revealed dozens of consecutive failed attempts on incrementally numb
 ---
 ## 🧨 Malicious Script Execution Identified
 
-To understand what triggered the suspicious network activity, we pivoted to the DeviceProcessEvents table to examine process activity around the time the port scan began. Our investigation revealed that a PowerShell script named portscan.ps1 was executed at 2025-06-18T20:37:35Z.
+To understand what triggered the suspicious network activity, I pivoted to the DeviceProcessEvents table to examine process activity around the time the port scan began. Our investigation revealed that a PowerShell script named portscan.ps1 was executed at 2025-06-18T20:37:35Z.
 
-We used the following Kusto Query Language (KQL) query to identify processes that executed within a 10-minute window surrounding the event:
+I used the following Kusto Query Language (KQL) query to identify processes that executed within a 10-minute window surrounding the event:
 
 ![image](https://github.com/user-attachments/assets/642d542c-2d82-42a9-8398-902bf3632554)
 
@@ -78,7 +78,7 @@ We used the following Kusto Query Language (KQL) query to identify processes tha
 📌 Finding:
 The output confirmed that portscan.ps1 was launched using PowerShell under the SYSTEM account, which is highly unusual and not part of any authorized task configuration which is a strong indication of malicious or misused automation.
 
-After identifying the suspicious portscan.ps1 activity in the Defender logs, we logged into the suspected VM and located the actual PowerShell script used to conduct the internal port scan.
+After identifying the suspicious portscan.ps1 activity in the Defender logs, I logged into the suspected VM and located the actual PowerShell script used to conduct the internal port scan.
 
 📂 Script Path:
 C:\ProgramData\entropyGorilla.log (log file output)
